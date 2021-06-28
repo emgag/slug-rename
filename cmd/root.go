@@ -33,6 +33,10 @@ var rootCmd = &cobra.Command{
 				t = slug.Substitute(slug.Make(slug.Substitute(f, m_pre)), m_post)
 			}
 
+			if f == t {
+				continue
+			}
+
 			if err := os.Rename(f, t); err != nil {
 				fmt.Fprintln(os.Stderr, err)
 			}
